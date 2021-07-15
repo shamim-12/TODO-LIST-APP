@@ -13,30 +13,26 @@
 </head>
 
 <body>
-    <div class = "mainBody">
+    
        <header>
         <h1>SHAMIE'S TO DO LIST </h1>
        </header>
-       <div>
-           <div class = "navcontent">
            <form >
              <input required type="text" id="todo">
                <button id="submitbutton">
                   <i class="fas fa-plus-circle"></i>
                 </button>
+                <select name = "selectedTodo" class="select">
+                    <option value = "All">All</option>
+                    <option value = "Completed">Completed</option>
+                    <option value = " Uncompleted">Uncompleted</option>
+                 </select>
+      
+            </form>        
 
+        <div class = "todocontainer">
                <ul class="todolist"></ul>
-            </form>
-           
-           <select name = "selectedTodo" id="selectedTodo">
-              <option value = "All">All</option>
-              <option value = "Completed">Completed</option>
-              <option value = " Uncompleted">Uncompleted</option>
-           </select>
-        </div>
-           
-     </div>
-
+        </div>   
     <script src="/js/index.js"></script>
 </body>
 

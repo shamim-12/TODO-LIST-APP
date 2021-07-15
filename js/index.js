@@ -2,7 +2,7 @@
 const todoItem = document.querySelector('#todo');
 const submitButton = document.querySelector('#submitbutton');
 const todoList = document.querySelector('.todolist');
-const selected = document.querySelector('#selectedTodo')
+const selected = document.querySelector('.select')
 
 
 //EventListners
@@ -22,7 +22,10 @@ itemContainer.classList.add('itemContainerstyle');
 // create li
 const itemlist = document.createElement('li');
 itemlist.classList.add('itemliststyle')
-if(todoItem.value.length > 0 ){
+
+
+if(todoItem.value.length > 1 ){
+    console.log(todoItem.value)
 itemlist.innerText = todoItem.value ;
 itemContainer.appendChild(itemlist);
 
@@ -43,6 +46,7 @@ itemContainer.appendChild(deleted);
 
 todoList.appendChild(itemContainer);
 todoItem.value = " ";
+
 }
 }
 //delete a todo
@@ -54,14 +58,17 @@ function deleteItem(e){
     if(item.classList[0]=== "deleteButton")
     { 
         const del = item.parentElement;
-        del.remove();
+        del.classList.add('rotate');
+       del.addEventListener('transitionend',function(){
+            del.remove();
+        })
     
 
     }
 
     if(item.classList[0] === "completedButton"){
         const del = item.parentElement;
-        del.classList.toggle('_completed');//forces the class to be added and returns true and if it  exists and the class is removed and a false  is returned. 
+        del.classList.toggle('completed1');//forces the class to be added and returns true and if it  exists and the class is removed and a false  is returned. 
     }
 
 
@@ -74,14 +81,14 @@ function selected_todo(e){
                 itemContainerstyle.style.display = "flex";
                 break;
             case 'Completed':
-                if(itemContainerstyle.classList.contains('_completed'))  {  
+                if(itemContainerstyle.classList.contains('completed1'))  {  
                 itemContainerstyle.style.display = "flex";
                 }else{
                     itemContainerstyle.style.display= "none";
                 }
                 break;
             case'Uncompleted':
-             if(!itemContainerstyle.classList.contains('_completed'))  {  
+             if(!(itemContainerstyle.classList.contains('completed1'))) {  
                 itemContainerstyle.style.display = "flex";
                 }else{
                         itemContainerstyle.style.display= "none";
